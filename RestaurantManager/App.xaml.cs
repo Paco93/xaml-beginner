@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Threading.Tasks;
 
 namespace RestaurantManager
 {
@@ -39,7 +40,8 @@ namespace RestaurantManager
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
+            var task = Task.Delay(2500);
+            task.Wait();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {

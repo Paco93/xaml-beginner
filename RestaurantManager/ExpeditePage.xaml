@@ -9,10 +9,15 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="1*" />
          </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Center" Grid.Row="1">**Clear All Orders**</TextBlock>
+        <AppBar Grid.Row="0">
+            <AppBarButton Icon="Home" Click="GotoHome">Home</AppBarButton>
+        </AppBar>
+        <ListView Grid.Row="1"></ListView>
+        <Button HorizontalAlignment="Center" Grid.Row="2">Clear All Orders</Button>
         
     </Grid>
 </Page>
