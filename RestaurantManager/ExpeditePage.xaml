@@ -5,19 +5,34 @@
     xmlns:local="using:RestaurantManager"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="800">
-
+    mc:Ignorable="d" Width="800"
+    DataContext="{StaticResource DataManager}">
+   
+    <Page.TopAppBar>
+        <AppBar>
+            <AppBarButton Label="Home" Click="GotoHome">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="Home" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </AppBar>
+    </Page.TopAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="1*" />
-         </Grid.RowDefinitions>
-        <AppBar Grid.Row="0">
-            <AppBarButton Icon="Home" Click="GotoHome">Home</AppBarButton>
-        </AppBar>
-        <ListView Grid.Row="1"></ListView>
-        <Button HorizontalAlignment="Center" Grid.Row="2">Clear All Orders</Button>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="1"  ItemsSource="{Binding Path=OrderItems}" Margin="10">
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+        </ListView>
+        <Button HorizontalAlignment="Center" Grid.Row="2" Click="Button_Click">Clear All Orders</Button>
         
     </Grid>
 </Page>

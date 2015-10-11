@@ -31,5 +31,20 @@ namespace RestaurantManager
         {
             Frame.Navigate(typeof(MainPage));
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.UI.Xaml.Controls.Button a = (Windows.UI.Xaml.Controls.Button)sender;
+            Models.DataManager b = (Models.DataManager)a.DataContext;           
+            b.CurrentlySelectedMenuItems.Add(MenuItems.SelectedItem.ToString());
+        }
+
+        private void SubmitOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.UI.Xaml.Controls.Button a = (Windows.UI.Xaml.Controls.Button)sender;
+            Models.DataManager b = (Models.DataManager)a.DataContext;
+            b.OrderItems.Add(b.submitOrder());
+            b.CurrentlySelectedMenuItems.Clear();
+        }
     }
 }

@@ -5,7 +5,17 @@
     xmlns:local="using:RestaurantManager"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="800">
+    mc:Ignorable="d" Width="800"
+    DataContext="{StaticResource DataManager}">
+    <Page.TopAppBar>
+        <AppBar>
+            <AppBarButton Label="Home" Click="GoHome">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="Home" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </AppBar>
+    </Page.TopAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -18,17 +28,15 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <AppBar Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" >
-            <AppBarButton  Icon="Home" Click="GoHome" Background="#33963232" />
-        </AppBar>
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="24">Special Requests:</TextBlock>
         <TextBlock Grid.Column="2" Grid.Row="1" FontSize="24">Order Items:</TextBlock>
-        <Button Grid.Column="0" Grid.Row="3" FontSize="24" HorizontalAlignment="Center">Add to Order</Button>
-        <Button Grid.Column="2" Grid.Row="3" FontSize="24" HorizontalAlignment="Center">Submit Order</Button>
-        <ListView Grid.Column="2" Grid.Row="2">
-           
+        <Button Grid.Column="0" Grid.Row="3" FontSize="24" HorizontalAlignment="Center" Margin="120,0,119,1" VerticalAlignment="Bottom" Click="Button_Click">Add to Order</Button>
+        <Button Grid.Column="2" Grid.Row="3" FontSize="24" HorizontalAlignment="Center" Click="SubmitOrder_Click">Submit Order</Button>
+        <ListView Grid.Column="2" Grid.Row="2" 
+                  ItemsSource="{Binding Path=CurrentlySelectedMenuItems, Mode=TwoWay}" >
         </ListView>
-        <ListView Grid.Column="0" Grid.Row="2">
+        
+        <ListView Grid.Column="0" Grid.Row="2" Name="MenuItems" ItemsSource="{Binding Path=MenuItems, Mode=TwoWay}" >
            
         </ListView>
     </Grid>
